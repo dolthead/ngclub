@@ -6,28 +6,28 @@ settings:
 
 dependencies:
   '@angular/animations':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/core@17.2.2)
   '@angular/common':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/core@17.2.2)(rxjs@7.8.1)
   '@angular/compiler':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/core@17.2.2)
   '@angular/core':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(rxjs@7.8.1)(zone.js@0.14.4)
   '@angular/forms':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/common@17.2.2)(@angular/core@17.2.2)(@angular/platform-browser@17.2.2)(rxjs@7.8.1)
   '@angular/platform-browser':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/animations@17.2.2)(@angular/common@17.2.2)(@angular/core@17.2.2)
   '@angular/platform-browser-dynamic':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/common@17.2.2)(@angular/compiler@17.2.2)(@angular/core@17.2.2)(@angular/platform-browser@17.2.2)
   '@angular/router':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/common@17.2.2)(@angular/core@17.2.2)(@angular/platform-browser@17.2.2)(rxjs@7.8.1)
   '@capacitor/app':
     specifier: 5.0.7
@@ -45,48 +45,48 @@ dependencies:
     specifier: 5.0.7
     version: 5.0.7(@capacitor/core@5.7.0)
   '@ionic/angular':
-    specifier: ^7.5.0
+    specifier: ^7.7.3
     version: 7.7.3(@angular/core@17.2.2)(@angular/forms@17.2.2)(@angular/router@17.2.2)(rxjs@7.8.1)(zone.js@0.14.4)
   ionicons:
-    specifier: ^7.2.1
+    specifier: ^7.2.2
     version: 7.2.2
   rxjs:
-    specifier: ~7.8.0
+    specifier: ~7.8.1
     version: 7.8.1
   tslib:
-    specifier: ^2.3.0
+    specifier: ^2.6.2
     version: 2.6.2
   zone.js:
-    specifier: ~0.14.2
+    specifier: ~0.14.4
     version: 0.14.4
 
 devDependencies:
   '@angular-devkit/build-angular':
-    specifier: ^17.0.0
+    specifier: ^17.2.1
     version: 17.2.1(@angular/compiler-cli@17.2.2)(karma@6.4.2)(typescript@5.2.2)
   '@angular-eslint/builder':
-    specifier: ^17.0.0
+    specifier: ^17.2.1
     version: 17.2.1(eslint@7.32.0)(typescript@5.2.2)
   '@angular-eslint/eslint-plugin':
-    specifier: ^17.0.0
+    specifier: ^17.2.1
     version: 17.2.1(eslint@7.32.0)(typescript@5.2.2)
   '@angular-eslint/eslint-plugin-template':
-    specifier: ^17.0.0
+    specifier: ^17.2.1
     version: 17.2.1(eslint@7.32.0)(typescript@5.2.2)
   '@angular-eslint/schematics':
-    specifier: ^17.0.0
+    specifier: ^17.2.1
     version: 17.2.1(@angular/cli@17.2.1)(eslint@7.32.0)(typescript@5.2.2)
   '@angular-eslint/template-parser':
-    specifier: ^17.0.0
+    specifier: ^17.2.1
     version: 17.2.1(eslint@7.32.0)(typescript@5.2.2)
   '@angular/cli':
-    specifier: ^17.0.0
+    specifier: ^17.2.1
     version: 17.2.1
   '@angular/compiler-cli':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2(@angular/compiler@17.2.2)(typescript@5.2.2)
   '@angular/language-service':
-    specifier: ^17.0.2
+    specifier: ^17.2.2
     version: 17.2.2
   '@capacitor/cli':
     specifier: 5.7.0
@@ -95,16 +95,16 @@ devDependencies:
     specifier: ^9.0.0
     version: 9.0.0
   '@types/jasmine':
-    specifier: ~5.1.0
+    specifier: ~5.1.4
     version: 5.1.4
   '@typescript-eslint/eslint-plugin':
-    specifier: ^6.0.0
+    specifier: ^6.21.0
     version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@7.32.0)(typescript@5.2.2)
   '@typescript-eslint/parser':
-    specifier: ^6.0.0
+    specifier: ^6.21.0
     version: 6.21.0(eslint@7.32.0)(typescript@5.2.2)
   eslint:
-    specifier: ^7.26.0
+    specifier: ^7.32.0
     version: 7.32.0
   eslint-plugin-import:
     specifier: 2.22.1
@@ -116,19 +116,19 @@ devDependencies:
     specifier: 1.2.2
     version: 1.2.2(eslint@7.32.0)
   jasmine-core:
-    specifier: ~5.1.0
+    specifier: ~5.1.2
     version: 5.1.2
   jasmine-spec-reporter:
-    specifier: ~5.0.0
+    specifier: ~5.0.2
     version: 5.0.2
   karma:
-    specifier: ~6.4.0
+    specifier: ~6.4.2
     version: 6.4.2
   karma-chrome-launcher:
     specifier: ~3.2.0
     version: 3.2.0
   karma-coverage:
-    specifier: ~2.2.0
+    specifier: ~2.2.1
     version: 2.2.1
   karma-jasmine:
     specifier: ~5.1.0
