@@ -1,9 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-img slot="start" src="/assets/club64.png" alt="Club/clover Logo"></ion-img>
+    <ion-icon slot="start" aria-hidden="true" src="/assets/club.svg" size="large"></ion-icon>
     <ion-title>
       Club
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openUserSettings()">
+        <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

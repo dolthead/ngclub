@@ -80,9 +80,9 @@
   ion-toolbar {
       --background: var(--metallic);
   }
-  ion-toolbar ion-img {
-    height: 24px;
-    margin-left: 16px;
+  ion-toolbar > ion-icon,
+  ion-toolbar > ion-title {
+    padding-left: 12px;
   }
 }
 

@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonImg } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { addCircleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
   standalone: true,
-  imports: [IonImg, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonButton, IonButtons, IonIcon, IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class Tab3Page {
-  constructor() {}
+  constructor() {
+    addIcons({ addCircleOutline });
+  }
+
+  addChat() {
+  }
 }
