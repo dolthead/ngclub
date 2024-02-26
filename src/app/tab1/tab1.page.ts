@@ -1,23 +1,28 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { personOutline } from 'ionicons/icons';
+import { person, personOutline } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
 import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   standalone: true,
-  imports: [IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
+  imports: [ NgIf, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
-export class Tab1Page {
-  private auth: Auth = inject(Auth);
+export class Tab1Page implements OnInit {
+  public auth: Auth = inject(Auth);
   private provider: GoogleAuthProvider = new GoogleAuthProvider();
   
   constructor(private modalCtrl: ModalController, private toast: ToastController) {
-    addIcons({ personOutline });
+    addIcons({ personOutline, person });
+  }
+
+  ngOnInit() {
+    this.auth.authStateReady().then(() => {}, () => {});
   }
 
   refreshPage() {

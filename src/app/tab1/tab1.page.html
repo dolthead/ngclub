@@ -1,19 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="dark" (click)="refreshPage()">
+      <ion-button color="dark" (click)="refreshPage()" aria-label="Refresh page data">
         <ion-icon slot="icon-only" src="/assets/club.svg"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button color="dark" (click)="openUserSettings()">
+      <ion-button *ngIf="!auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Login">
         <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Open user settings">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="padding">
 
 
 
