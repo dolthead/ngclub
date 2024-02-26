@@ -15,12 +15,15 @@ import { Auth } from '@angular/fire/auth';
 })
 export class SettingsPage implements OnInit {
   private auth: Auth = inject(Auth);
+  public user: any;
+  public letOthersSeeMyUser: boolean = false;
 
   constructor(private modalCtrl: ModalController, private toast: ToastController) { 
     addIcons({ closeCircleOutline });
   }
 
   ngOnInit() {
+    this.user = this.auth.currentUser;
   }
 
   close() { 
