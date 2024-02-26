@@ -1,11 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-icon slot="start" aria-hidden="true" src="/assets/club.svg" size="large"></ion-icon>
-    <ion-title>
-      Club
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="refreshPage()">
+        <ion-icon slot="icon-only" src="/assets/club.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="openUserSettings()">
+      <ion-button color="dark" (click)="openUserSettings()">
         <ion-icon slot="icon-only" name="person-outline"></ion-icon>
       </ion-button>
     </ion-buttons>

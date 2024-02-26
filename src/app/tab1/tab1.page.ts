@@ -15,6 +15,9 @@ export class Tab1Page {
     addIcons({ personOutline });
   }
 
+  refreshPage() {
+  }
+
   openUserSettings() {
   }
 }
