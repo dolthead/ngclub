@@ -81,7 +81,7 @@
       --background: var(--metallic);
   }
 }
-html.md ion-title {
+html.md ion-buttons + ion-title {
   padding-inline-start: 0;
 }
 
