@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { personOutline } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
@@ -16,7 +16,7 @@ export class Tab1Page {
   private auth: Auth = inject(Auth);
   private provider: GoogleAuthProvider = new GoogleAuthProvider();
   
-  constructor(private modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController, private toast: ToastController) {
     addIcons({ personOutline });
   }
 
@@ -25,7 +25,19 @@ export class Tab1Page {
 
   async openUserSettings() {
     if (!this.auth.currentUser) {
-      signInWithPopup(this.auth, this.provider);
+      signInWithPopup(this.auth, this.provider)
+        .then(() => {
+          this.openUserSettings();
+          this.toast.create({
+            message: 'Logged in successfully',
+            duration: 5000,
+          }).then(toast => toast.present());
+        }, (error) => {
+          this.toast.create({
+            message: error.message,
+            duration: 5000,
+          }).then(toast => toast.present());
+        });
     } else {
       const modal = await this.modalCtrl.create({
         component: SettingsPage,
