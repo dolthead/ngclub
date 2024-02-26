@@ -16,7 +16,7 @@ import { Auth } from '@angular/fire/auth';
 export class SettingsPage implements OnInit {
   private auth: Auth = inject(Auth);
   public user: any;
-  public letOthersSeeMyUser: boolean = false;
+  public settings: any = { seeName: false, allowChat: false, allowInvites: false, allowPhotoTags: false };
 
   constructor(private modalCtrl: ModalController, private toast: ToastController) { 
     addIcons({ closeCircleOutline });

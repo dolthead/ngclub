@@ -80,6 +80,9 @@
   ion-toolbar {
       --background: var(--metallic);
   }
+  ion-content {
+    --background: var(--ion-color-light);
+  }
 }
 html.md ion-buttons + ion-title {
   padding-inline-start: 0;

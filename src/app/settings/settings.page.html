@@ -20,6 +20,10 @@
     <ion-card-content>
       <ion-input type="text" [(ngModel)]="user.displayName" readonly label="Name" labelPlacement="floating"></ion-input>
       <ion-input type="email" [(ngModel)]="user.email" readonly label="Email" labelPlacement="floating"></ion-input>
+      <ion-checkbox [(ngModel)]="settings.seeName" labelPlacement="end">Add my name and photo to the directory</ion-checkbox>
+      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowInvites" labelPlacement="end" class="ion-margin-start">Allow event invitations</ion-checkbox>
+      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowChat" labelPlacement="end" class="ion-margin-start">Allow chat messages</ion-checkbox>
+      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowPhotoTags" labelPlacement="end" class="ion-margin-start">Allow photo tags</ion-checkbox>
     </ion-card-content>
   </ion-card>
 
