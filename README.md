@@ -3,3 +3,5 @@
 Presented at Ionic Utah in February 2024.
 
 [The slide deck](https://slides.com/toddhale/rapid-app-dev-2024) on slides.com.
+
+[The running web app](https://club-hale.web.app/) on a firebase host.
