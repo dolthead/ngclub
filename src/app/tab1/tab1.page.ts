@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonItem, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { person, personOutline } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
@@ -14,7 +14,7 @@ const USER_DATA = 'UserData';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   standalone: true,
-  imports: [ IonLabel, IonItem,  NgIf, NgFor, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
+  imports: [IonList,  IonLabel, IonItem,  NgIf, NgFor, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
 export class Tab1Page implements OnInit {
   public auth: Auth = inject(Auth);

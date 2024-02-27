@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { closeCircleOutline } from 'ionicons/icons';
-import { IonicModule, ModalController, ToastController } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonAvatar, IonCard, IonCardContent, IonInput, IonCheckbox } from '@ionic/angular/standalone';
 import { Auth } from '@angular/fire/auth';
 import { CollectionReference, Firestore, addDoc, collection, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
 
@@ -14,7 +14,7 @@ const USER_DATA = 'UserData';
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [ CommonModule, FormsModule, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonAvatar, IonCard, IonCardContent, IonInput, IonCheckbox ],
 })
 export class SettingsPage {
   private auth: Auth = inject(Auth);

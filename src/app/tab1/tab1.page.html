@@ -18,8 +18,10 @@
 
 <ion-content class="padding">
 
-  <ion-item *ngFor="let user of userList">
-    <ion-label>{{ user.displayName }}</ion-label>
-  </ion-item>
+  <ion-list lines="full">
+    <ion-item *ngFor="let user of userList">
+      <ion-label>{{ user.displayName }}</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

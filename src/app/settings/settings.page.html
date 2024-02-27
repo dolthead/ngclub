@@ -11,7 +11,6 @@
 
 <ion-content class="ion-padding">
 
-
   <ion-avatar class="user-img">
     <img [src]="user.photoURL" alt="User photo, or first initial placeholder">
   </ion-avatar>
@@ -20,10 +19,15 @@
     <ion-card-content>
       <ion-input type="text" [(ngModel)]="user.displayName" readonly label="Name" labelPlacement="floating"></ion-input>
       <ion-input type="email" [(ngModel)]="user.email" readonly label="Email" labelPlacement="floating"></ion-input>
-      <ion-checkbox [(ngModel)]="settings.seeName" labelPlacement="end" (ngModelChange)="saveSettings()">Add my name and photo to the directory</ion-checkbox>
-      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowInvites" (ngModelChange)="saveSettings()" labelPlacement="end" class="ion-margin-start">Allow event invitations</ion-checkbox>
-      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowChat" (ngModelChange)="saveSettings()" labelPlacement="end" class="ion-margin-start">Allow chat messages</ion-checkbox>
-      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowPhotoTags" (ngModelChange)="saveSettings()" labelPlacement="end" class="ion-margin-start">Allow photo tags</ion-checkbox>
+      <br>
+      <ion-checkbox [(ngModel)]="settings.seeName" (ngModelChange)="saveSettings()" labelPlacement="end">Add my name and photo to the
+        directory</ion-checkbox><br>
+      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowInvites" (ngModelChange)="saveSettings()" labelPlacement="end"
+        class="ion-margin-start">Allow event invitations</ion-checkbox><br>
+      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowChat" (ngModelChange)="saveSettings()" labelPlacement="end"
+        class="ion-margin-start">Allow chat messages</ion-checkbox><br>
+      <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowPhotoTags" (ngModelChange)="saveSettings()" labelPlacement="end" 
+        class="ion-margin-start">Allow photo tags</ion-checkbox><br>
     </ion-card-content>
   </ion-card>
 
