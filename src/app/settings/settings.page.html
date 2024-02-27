@@ -14,13 +14,13 @@
   <ion-card>
     <ion-card-header>
       <ion-avatar class="user-img">
-        <img [src]="user.photoURL" alt="User photo, or first initial placeholder">
+        <img [src]="user?.photoURL" alt="User photo, or first initial placeholder">
       </ion-avatar>
     </ion-card-header>
     
     <ion-card-content>
-      <h1 type="text">{{ user.displayName }}</h1>
-      <h4 type="email">{{ user.email }}</h4>
+      <h1 type="text">{{ user?.displayName }}</h1>
+      <h4 type="email">{{ user?.email }}</h4>
       <br>
       <ion-checkbox [(ngModel)]="settings.seeName" (ngModelChange)="saveSettings()" labelPlacement="end">
         <ion-label>Add my name and photo to the directory</ion-label>

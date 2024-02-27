@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { closeCircleOutline } from 'ionicons/icons';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonAvatar, IonCard, IonCardContent, IonCheckbox, IonLabel, IonCardHeader } from '@ionic/angular/standalone';
-import { Auth } from '@angular/fire/auth';
-import { CollectionReference, Firestore, addDoc, collection, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
+import { Auth, User } from '@angular/fire/auth';
+import { CollectionReference, DocumentData, Firestore, addDoc, collection, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
 
 const USER_DATA = 'UserData';
 
@@ -18,8 +18,8 @@ const USER_DATA = 'UserData';
 })
 export class SettingsPage {
   private auth: Auth = inject(Auth);
-  public user: any;
-  public currentDoc: any = undefined;
+  public user: User | null;
+  public currentDoc: DocumentData | undefined = undefined;
   public settings: any = { 
     displayName: undefined,
     photoURL: undefined,
@@ -37,15 +37,15 @@ export class SettingsPage {
     addIcons({ closeCircleOutline });
     this.user = this.auth.currentUser;
 
-    const q = query(collection(this.db, USER_DATA), where("uid", "==", this.user.uid));
+    const q = query(collection(this.db, USER_DATA), where("uid", "==", this.user?.uid));
     getDocs(q).then((querySnapshot) => {
       this.currentDoc = querySnapshot.docs.length ? querySnapshot.docs[0] : undefined;
       if (this.currentDoc) {
-        this.settings = this.currentDoc.data();
+        this.settings = this.currentDoc['data']();
       } else {
-        this.settings.displayName = this.user.displayName;
-        this.settings.photoURL = this.user.photoURL;
-        this.settings.uid = this.user.uid;
+        this.settings.displayName = this.user?.displayName;
+        this.settings.photoURL = this.user?.photoURL;
+        this.settings.uid = this.user?.uid;
         addDoc(this.userCollection, this.settings)
           .then(doc => this.currentDoc = doc, () => {});
       }
@@ -53,7 +53,9 @@ export class SettingsPage {
   }
 
   saveSettings() {
-    setDoc(doc(this.db, USER_DATA, this.currentDoc.id), this.settings);
+    if (this.currentDoc) {
+      setDoc(doc(this.db, USER_DATA, this.currentDoc['id']), this.settings);
+    }
   }
 
   close() { 

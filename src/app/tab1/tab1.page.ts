@@ -5,7 +5,7 @@ import { person, personOutline } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
 import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { NgIf, NgFor } from '@angular/common';
-import { collection, where, getDocs, Firestore, query } from '@angular/fire/firestore';
+import { collection, where, getDocs, Firestore, query, DocumentData } from '@angular/fire/firestore';
 
 const USER_DATA = 'UserData';
 
@@ -20,7 +20,7 @@ export class Tab1Page implements OnInit {
   public auth: Auth = inject(Auth);
   private provider: GoogleAuthProvider = new GoogleAuthProvider();
   private db: Firestore = inject(Firestore);
-  public userList: any[] = [];
+  public userList: DocumentData[] = [];
   public authReady = false;
   
   constructor(private modalCtrl: ModalController, private toast: ToastController) {
@@ -34,10 +34,11 @@ export class Tab1Page implements OnInit {
     }, () => {});
   }
 
-  refreshPage(event: any) {
+  refreshPage(event: CustomEvent | undefined) {
+    console.log(typeof event);
     const q = query(collection(this.db, USER_DATA), where("seeName", "==", true));
     getDocs(q).then((querySnapshot) => {
-      setTimeout(() => event?.target.complete(), 500);
+      setTimeout(() => event?.detail?.complete(), 500);
       this.userList = querySnapshot.docs.map(doc => doc.data());
     }, () => {});
   }

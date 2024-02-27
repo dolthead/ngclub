@@ -21,9 +21,9 @@
   <ion-list lines="full">
     <ion-item *ngFor="let user of userList">
       <ion-avatar slot="start">
-        <img [src]="user.photoURL" alt="User photo, or first initial placeholder">
+        <img [src]="user['photoURL']" alt="User photo, or first initial placeholder">
       </ion-avatar>
-      <ion-label>{{ user.displayName }}</ion-label>
+      <ion-label>{{ user['displayName'] }}</ion-label>
     </ion-item>
   </ion-list>
 
