@@ -1,10 +1,13 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { closeCircleOutline } from 'ionicons/icons';
 import { IonicModule, ModalController, ToastController } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
+import { CollectionReference, Firestore, addDoc, collection, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
+
+const USER_DATA = 'UserData';
 
 @Component({
   selector: 'app-settings',
@@ -13,17 +16,42 @@ import { Auth } from '@angular/fire/auth';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class SettingsPage implements OnInit {
+export class SettingsPage {
   private auth: Auth = inject(Auth);
   public user: any;
-  public settings: any = { seeName: false, allowChat: false, allowInvites: false, allowPhotoTags: false };
+  public currentDoc: any = undefined;
+  public settings: any = { 
+    displayName: undefined, 
+    uid: undefined, 
+    seeName: false, 
+    allowChat: false, 
+    allowInvites: false, 
+    allowPhotoTags: false,
+  };
+  
+  private db: Firestore = inject(Firestore);
+  public userCollection: CollectionReference = collection(this.db, USER_DATA);
 
   constructor(private modalCtrl: ModalController, private toast: ToastController) { 
     addIcons({ closeCircleOutline });
+    this.user = this.auth.currentUser;
+
+    const q = query(collection(this.db, USER_DATA), where("uid", "==", this.user.uid));
+    getDocs(q).then((querySnapshot) => {
+      this.currentDoc = querySnapshot.docs.length ? querySnapshot.docs[0] : undefined;
+      if (this.currentDoc) {
+        this.settings = this.currentDoc.data();
+      } else {
+        this.settings.displayName = this.user.displayName;
+        this.settings.uid = this.user.uid;
+        addDoc(this.userCollection, this.settings)
+          .then(doc => this.currentDoc = doc, () => {});
+      }
+    }, () => {})
   }
 
-  ngOnInit() {
-    this.user = this.auth.currentUser;
+  saveSettings() {
+    setDoc(doc(this.db, USER_DATA, this.currentDoc.id), this.settings);
   }
 
   close() { 
@@ -45,5 +73,4 @@ export class SettingsPage implements OnInit {
       });
     this.modalCtrl.dismiss();
   }
-
 }

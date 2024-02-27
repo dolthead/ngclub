@@ -32,8 +32,6 @@ export class Tab1Page implements OnInit {
     if (!this.auth.currentUser) {
       signInWithPopup(this.auth, this.provider)
         .then(data => {
-          console.log({data});
-          // const {}
           this.openUserSettings();
           this.toast.create({
             message: 'Logged in successfully',
@@ -46,7 +44,6 @@ export class Tab1Page implements OnInit {
           }).then(toast => toast.present());
         });
     } else {
-      console.log('user', this.auth.currentUser);
       const modal = await this.modalCtrl.create({
         component: SettingsPage,
         initialBreakpoint: 0.8,
