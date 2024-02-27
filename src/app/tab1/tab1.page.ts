@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonItem, IonLabel, IonList, IonAvatar } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonItem, IonLabel, IonList, IonAvatar, IonRefresher, IonRefresherContent } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { person, personOutline } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
@@ -14,7 +14,7 @@ const USER_DATA = 'UserData';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   standalone: true,
-  imports: [IonAvatar, IonList,  IonLabel, IonItem,  NgIf, NgFor, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
+  imports: [IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem,  NgIf, NgFor, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
 export class Tab1Page implements OnInit {
   public auth: Auth = inject(Auth);
@@ -30,13 +30,14 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.auth.authStateReady().then(() => {
       this.authReady = true;
-      this.refreshPage();
+      this.refreshPage(undefined);
     }, () => {});
   }
 
-  refreshPage() {
+  refreshPage(event: any) {
     const q = query(collection(this.db, USER_DATA), where("seeName", "==", true));
     getDocs(q).then((querySnapshot) => {
+      setTimeout(() => event?.target.complete(), 500);
       this.userList = querySnapshot.docs.map(doc => doc.data());
     }, () => {});
   }

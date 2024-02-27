@@ -1,10 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="dark" (click)="refreshPage()" aria-label="Refresh page data">
-        <ion-icon slot="icon-only" src="/assets/club.svg"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-icon slot="start" src="/assets/club.svg" size="large"></ion-icon>
     <ion-buttons slot="end">
       <ion-button *ngIf="!auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Login" [disabled]="!authReady">
         <ion-icon slot="icon-only" name="person-outline"></ion-icon>
@@ -17,6 +13,10 @@
 </ion-header>
 
 <ion-content class="padding">
+
+  <ion-refresher slot="fixed" (ionRefresh)="refreshPage($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-list lines="full">
     <ion-item *ngFor="let user of userList">

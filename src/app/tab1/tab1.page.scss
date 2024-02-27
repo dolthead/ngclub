@@ -1,3 +1,7 @@
 ion-list {
     background: transparent;
 }
+ion-toolbar > ion-icon {
+    margin-inline: 12px;
+    height: 25px;
+}
