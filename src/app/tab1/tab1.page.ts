@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, ToastController, IonItem, IonLabel, IonList, IonAvatar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { person, personOutline } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
@@ -14,21 +14,24 @@ const USER_DATA = 'UserData';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   standalone: true,
-  imports: [IonList,  IonLabel, IonItem,  NgIf, NgFor, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
+  imports: [IonAvatar, IonList,  IonLabel, IonItem,  NgIf, NgFor, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
 export class Tab1Page implements OnInit {
   public auth: Auth = inject(Auth);
   private provider: GoogleAuthProvider = new GoogleAuthProvider();
   private db: Firestore = inject(Firestore);
   public userList: any[] = [];
+  public authReady = false;
   
   constructor(private modalCtrl: ModalController, private toast: ToastController) {
     addIcons({ personOutline, person });
   }
 
   ngOnInit() {
-    this.auth.authStateReady().then(() => {}, () => {});
-    this.refreshPage();
+    this.auth.authStateReady().then(() => {
+      this.authReady = true;
+      this.refreshPage();
+    }, () => {});
   }
 
   refreshPage() {
@@ -56,8 +59,8 @@ export class Tab1Page implements OnInit {
     } else {
       const modal = await this.modalCtrl.create({
         component: SettingsPage,
-        initialBreakpoint: 0.8,
-        breakpoints: [0, 0.8],
+        initialBreakpoint: 1.0,
+        breakpoints: [0, 0.6, 1.0],
       });
       modal.present();
     }

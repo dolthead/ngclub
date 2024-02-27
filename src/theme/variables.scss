@@ -66,6 +66,9 @@
 	--ion-color-dark-shade: #1e2023;
 	--ion-color-dark-tint: #383a3e;
 
+
+  --ion-color-step-100: #e6e6e6;
+
   --ion-tab-bar-background: var(--ion-color-light-tint);
   --metallic: linear-gradient(
       45deg,
@@ -81,7 +84,7 @@
       --background: var(--metallic);
   }
   ion-content {
-    --background: var(--ion-color-light);
+    --background: var(--ion-color-step-100);
   }
 }
 html.md ion-buttons + ion-title {

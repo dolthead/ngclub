@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button *ngIf="!auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Login">
+      <ion-button *ngIf="!auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Login" [disabled]="!authReady">
         <ion-icon slot="icon-only" name="person-outline"></ion-icon>
       </ion-button>
       <ion-button *ngIf="auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Open user settings">
@@ -20,6 +20,9 @@
 
   <ion-list lines="full">
     <ion-item *ngFor="let user of userList">
+      <ion-avatar slot="start">
+        <img [src]="user.photoURL" alt="User photo, or first initial placeholder">
+      </ion-avatar>
       <ion-label>{{ user.displayName }}</ion-label>
     </ion-item>
   </ion-list>

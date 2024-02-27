@@ -21,7 +21,8 @@ export class SettingsPage {
   public user: any;
   public currentDoc: any = undefined;
   public settings: any = { 
-    displayName: undefined, 
+    displayName: undefined,
+    photoURL: undefined,
     uid: undefined, 
     seeName: false, 
     allowChat: false, 
@@ -43,6 +44,7 @@ export class SettingsPage {
         this.settings = this.currentDoc.data();
       } else {
         this.settings.displayName = this.user.displayName;
+        this.settings.photoURL = this.user.photoURL;
         this.settings.uid = this.user.uid;
         addDoc(this.userCollection, this.settings)
           .then(doc => this.currentDoc = doc, () => {});
