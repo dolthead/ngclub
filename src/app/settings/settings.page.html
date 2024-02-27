@@ -9,19 +9,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-
-  <ion-avatar class="user-img">
-    <img [src]="user.photoURL" alt="User photo, or first initial placeholder">
-  </ion-avatar>
+<ion-content>
 
   <ion-card>
+    <ion-card-header>
+      <ion-avatar class="user-img">
+        <img [src]="user.photoURL" alt="User photo, or first initial placeholder">
+      </ion-avatar>
+    </ion-card-header>
+    
     <ion-card-content>
-      <ion-input type="text" [(ngModel)]="user.displayName" readonly label="Name" labelPlacement="floating"></ion-input>
-      <ion-input type="email" [(ngModel)]="user.email" readonly label="Email" labelPlacement="floating"></ion-input>
+      <h1 type="text">{{ user.displayName }}</h1>
+      <h4 type="email">{{ user.email }}</h4>
       <br>
-      <ion-checkbox [(ngModel)]="settings.seeName" (ngModelChange)="saveSettings()" labelPlacement="end">Add my name and photo to the
-        directory</ion-checkbox><br>
+      <ion-checkbox [(ngModel)]="settings.seeName" (ngModelChange)="saveSettings()" labelPlacement="end">
+        <ion-label>Add my name and photo to the directory</ion-label>
+      </ion-checkbox><br>
       <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowInvites" (ngModelChange)="saveSettings()" labelPlacement="end"
         class="ion-margin-start">Allow event invitations</ion-checkbox><br>
       <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowChat" (ngModelChange)="saveSettings()" labelPlacement="end"
@@ -31,8 +34,6 @@
     </ion-card-content>
   </ion-card>
 
-  <br>
-
-  <ion-button color="light" expand="block" (click)="logout()">Logout</ion-button>
+  <ion-button color="light" expand="block" (click)="logout()" class="ion-margin">Logout</ion-button>
 
 </ion-content>
