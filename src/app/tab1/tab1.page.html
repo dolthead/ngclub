@@ -19,12 +19,25 @@
   </ion-refresher>
 
   <ion-list lines="full">
+
     <ion-item *ngFor="let user of userList">
       <ion-avatar slot="start">
         <img [src]="user['photoURL']" alt="User photo, or first initial placeholder">
       </ion-avatar>
       <ion-label>{{ user['displayName'] }}</ion-label>
     </ion-item>
+
+    <ng-container *ngIf="loading">
+      <ion-item *ngFor="let x of [35, 50, 40]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text [animated]="true" style="border-radius: 50%"></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <ion-skeleton-text [animated]="true" style="height: 24px" [ngStyle]="{ 'width': x + '%'}"></ion-skeleton-text>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+
   </ion-list>
 
 </ion-content>
