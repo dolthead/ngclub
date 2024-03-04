@@ -69,12 +69,12 @@ export class SettingsPage {
           message: 'Logged out successfully',
           duration: 5000,
         }).then(toast => toast.present());
+        this.modalCtrl.dismiss();
       }, (error) => {
         this.toast.create({
           message: error.message,
           duration: 5000,
         }).then(toast => toast.present());
       });
-    this.modalCtrl.dismiss();
   }
 }

@@ -36,13 +36,16 @@ export class Tab1Page implements OnInit {
   }
 
   async refreshPage(event: CustomEvent | undefined) {
-    this.loading = true;
-    const q = query(collection(this.db, USER_DATA), where("seeName", "==", true));
-    getDocs(q).then((querySnapshot) => {
-      setTimeout(() => event?.detail?.complete(), 500);
-      this.userList = querySnapshot.docs.map(doc => doc.data());
-      this.loading = false;
-    }, () => {});
+    this.userList = [];
+    if (this.auth.currentUser) {
+      this.loading = true;
+      const q = query(collection(this.db, USER_DATA), where("seeName", "==", true));
+      getDocs(q).then((querySnapshot) => {
+        setTimeout(() => event?.detail?.complete(), 500);
+        this.userList = querySnapshot.docs.map(doc => doc.data());
+        this.loading = false;
+      }, () => {});
+    }
   }
 
   async openUserSettings() {
@@ -67,6 +70,8 @@ export class Tab1Page implements OnInit {
         breakpoints: [0, 0.6, 1.0],
       });
       modal.present();
+      await modal.onDidDismiss();
+      this.refreshPage(undefined);
     }
   }
 }
