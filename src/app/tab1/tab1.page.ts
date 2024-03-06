@@ -40,11 +40,15 @@ export class Tab1Page implements OnInit {
     if (this.auth.currentUser) {
       this.loading = true;
       const q = query(collection(this.db, USER_DATA), where("seeName", "==", true));
-      getDocs(q).then((querySnapshot) => {
-        setTimeout(() => event?.detail?.complete(), 500);
-        this.userList = querySnapshot.docs.map(doc => doc.data());
-        this.loading = false;
-      }, () => {});
+      getDocs(q)
+        .then((querySnapshot) => this.userList = querySnapshot.docs.map(doc => doc.data()), 
+          () => {})
+        .finally(() => {
+          this.loading = false;
+          setTimeout(() => event?.detail?.complete(), 500);
+        });
+    } else {
+      setTimeout(() => event?.detail?.complete(), 500)
     }
   }
 
