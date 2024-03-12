@@ -7,4 +7,4 @@ export interface UserSettings {
     allowChat: boolean; 
     allowInvites: boolean; 
     allowPhotoTags: boolean;
-  }
+  };

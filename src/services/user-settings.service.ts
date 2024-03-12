@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { CollectionReference, DocumentReference, DocumentSnapshot, Firestore, addDoc, collection, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
+import { CollectionReference, DocumentReference, Firestore, addDoc, collection, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
 import { UserSettings } from 'src/models/user-settings.model';
 
 const USER_DATA = 'UserData';
@@ -57,12 +57,11 @@ export class UserSettingsService {
             }, () => { });
     };
 
-    saveUserSettings(settings: void | UserSettings): Promise<void | undefined> {
+    saveUserSettings(settings: void | UserSettings): Promise<Error | void> {
         if (settings && this.currentUserDoc) {
             return setDoc(doc(this.db, USER_DATA, this.currentUserDoc['id']), settings);
         } else {
-            return Promise.reject(undefined);
+            return Promise.reject(new Error('No settings to save'));
         }
     }
-
 }

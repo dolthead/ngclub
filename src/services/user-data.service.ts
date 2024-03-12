@@ -12,6 +12,6 @@ export class UserDataService {
     getUserList(): Promise<undefined | DocumentData[]> {
         const q = query(collection(this.db, USER_DATA), where("seeName", "==", true));
         return getDocs(q)
-            .then((querySnapshot) => querySnapshot.docs.map(doc => doc.data()), () => undefined);
+            .then(querySnapshot => querySnapshot.docs.map(doc => doc.data()), () => undefined);
     }
 }

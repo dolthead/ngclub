@@ -46,11 +46,15 @@ export class Tab1Page implements OnInit {
         .then((data: undefined | DocumentData[]) => this.userList = data, () => {})
         .finally(() => {
           this.loading = false;
-          setTimeout(() => event?.detail?.complete(), 500);
+          this.closeRefresher(event);
         });
     } else {
-      setTimeout(() => event?.detail?.complete(), 500)
+      this.closeRefresher(event);
     }
+  }
+
+  closeRefresher(event: CustomEvent | undefined) {
+    setTimeout(() => event?.detail?.complete(), 500)
   }
 
   async openUserSettings() {
