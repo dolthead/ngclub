@@ -5,13 +5,13 @@ import { addIcons } from 'ionicons';
 import { addCircleOutline } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+  selector: 'events-tab',
+  templateUrl: 'events-tab.page.html',
+  styleUrls: ['events-tab.page.scss'],
   standalone: true,
   imports: [IonButtons, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, RouterLink ]
 })
-export class Tab2Page {
+export class EventsTabPage {
   constructor() {
     addIcons({ addCircleOutline });
   }

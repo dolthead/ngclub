@@ -10,13 +10,13 @@ import { UserDataService } from 'src/services/user-data.service';
 import { AppToastService } from 'src/services/app-toast.service';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  selector: 'home-tab',
+  templateUrl: 'home-tab.page.html',
+  styleUrls: ['home-tab.page.scss'],
   standalone: true,
   imports: [ IonSkeletonText, IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem,  NgIf, NgFor, NgStyle, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
-export class Tab1Page implements OnInit {
+export class HomeTabPage implements OnInit {
   private provider: GoogleAuthProvider = new GoogleAuthProvider();
   private userData: UserDataService = inject(UserDataService);
   private toastService: AppToastService = inject(AppToastService);

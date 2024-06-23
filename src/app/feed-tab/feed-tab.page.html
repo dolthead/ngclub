@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" routerLink="/tabs/homeTab" aria-label="Go to Club home">
+        <ion-icon slot="icon-only" src="/assets/club.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Feed
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark" (click)="addPost()" aria-label="Add a new photo">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  
+  <!-- iterate through postList and display messages and images in each postList -->
+  <ion-list>
+    <ion-item *ngFor="let post of postList">
+      <ion-label>
+        <h2>{{post.title}}</h2>
+        <p>{{post.content}}</p>
+      </ion-label>
+      <ion-thumbnail slot="end" *ngFor="let img of post.imageList">
+        <img src="{{img}}">
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
