@@ -4,7 +4,7 @@ import { addIcons } from 'ionicons';
 import { person, personOutline } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
 import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
-import { NgIf, NgFor, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import { DocumentData } from '@angular/fire/firestore';
 import { UserDataService } from 'src/services/user-data.service';
 import { AppToastService } from 'src/services/app-toast.service';
@@ -14,13 +14,13 @@ import { AppToastService } from 'src/services/app-toast.service';
   templateUrl: 'home-tab.page.html',
   styleUrls: ['home-tab.page.scss'],
   standalone: true,
-  imports: [ IonSkeletonText, IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem,  NgIf, NgFor, NgStyle, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
+  imports: [ IonSkeletonText, IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem, NgStyle, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
 export class HomeTabPage implements OnInit {
-  private provider: GoogleAuthProvider = new GoogleAuthProvider();
-  private userData: UserDataService = inject(UserDataService);
-  private toastService: AppToastService = inject(AppToastService);
-  private modalCtrl: ModalController = inject(ModalController);
+  private readonly provider: GoogleAuthProvider = new GoogleAuthProvider();
+  private readonly userData: UserDataService = inject(UserDataService);
+  private readonly toastService: AppToastService = inject(AppToastService);
+  private readonly modalCtrl: ModalController = inject(ModalController);
   
   public auth: Auth = inject(Auth);
   public userList: undefined | DocumentData[] = [];
@@ -39,7 +39,7 @@ export class HomeTabPage implements OnInit {
   }
 
   async refreshPage(event: CustomEvent | undefined) {
-    this.userList = [];
+    // this.userList = [];
     if (this.auth.currentUser) {
       this.loading = true;
       this.userData.getUserList()

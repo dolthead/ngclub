@@ -11,38 +11,40 @@
 
 <ion-content>
 
-  <ion-card *ngIf="settings">
-    <ion-card-header>
-      <ion-avatar class="user-img">
-        <img [src]="settings.photoURL" alt="User photo, or first initial placeholder">
-      </ion-avatar>
-    </ion-card-header>
+  @if (settings) {
+    <ion-card>
+      <ion-card-header>
+        <ion-avatar class="user-img">
+          <img [src]="settings.photoUrl" alt="User photo, or first initial placeholder">
+        </ion-avatar>
+      </ion-card-header>
 
-    <ion-card-content>
-      <h1>{{ settings.displayName }}</h1>
-      <h4>{{ settings.email }}</h4>
-      <br>
-      <ion-list lines="none">
-        <ion-item>
-          <ion-checkbox [(ngModel)]="settings.seeName" (ngModelChange)="saveSettings()">
-            <ion-label>Add my name and photo to the directory</ion-label>
-          </ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowInvites"
-            (ngModelChange)="saveSettings()" class="ion-margin-start">Allow event invitations</ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowChat" (ngModelChange)="saveSettings()"
-            class="ion-margin-start">Allow chat messages</ion-checkbox><br>
-        </ion-item>
-        <ion-item>
-          <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowPhotoTags"
-            (ngModelChange)="saveSettings()" class="ion-margin-start">Allow photo tags</ion-checkbox><br>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+      <ion-card-content>
+        <h1>{{ settings.displayName }}</h1>
+        <h4>{{ settings.email }}</h4>
+        <br>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-checkbox [(ngModel)]="settings.seeName" (ngModelChange)="saveSettings()">
+              <ion-label>Add my name and photo to the directory</ion-label>
+            </ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowInvites"
+              (ngModelChange)="saveSettings()" class="ion-margin-start">Allow event invitations</ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowChat" (ngModelChange)="saveSettings()"
+              class="ion-margin-start">Allow chat messages</ion-checkbox><br>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [disabled]="!settings.seeName" [(ngModel)]="settings.allowPhotoTags"
+              (ngModelChange)="saveSettings()" class="ion-margin-start">Allow photo tags</ion-checkbox><br>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  }
 
   <ion-button color="primary" expand="block" (click)="close()" class="ion-margin">Close</ion-button>
 

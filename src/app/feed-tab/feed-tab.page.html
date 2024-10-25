@@ -16,19 +16,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="padding">
+<ion-content>
   
   <!-- iterate through postList and display messages and images in each postList -->
   <ion-list>
-    <ion-item *ngFor="let post of postList">
-      <ion-label>
-        <h2>{{post.title}}</h2>
-        <p>{{post.content}}</p>
-      </ion-label>
-      <ion-thumbnail slot="end" *ngFor="let img of post.imageList">
-        <img src="{{img}}">
-      </ion-thumbnail>
-    </ion-item>
+    @for (post of postList; track post.id) {
+      <ion-item>
+        <ion-label>
+          <h2>{{post.title}}</h2>
+          <p>{{post.content}}</p>
+        </ion-label>
+        @for (img of post.imageList; track $index) {
+          <ion-thumbnail slot="end">
+            <img src="{{img}}">
+          </ion-thumbnail>
+        }
+      </ion-item>
+    }
   </ion-list>
 
 </ion-content>

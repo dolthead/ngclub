@@ -8,7 +8,7 @@ const USER_DATA = 'UserData';
 const NewUserSettings: UserSettings = {
     displayName: '',
     email: '',
-    photoURL: '',
+    photoUrl: '',
     uid: '',
     seeName: false,
     allowChat: false,
@@ -20,8 +20,8 @@ const NewUserSettings: UserSettings = {
     providedIn: 'root'
 })
 export class UserSettingsService {
-    private db: Firestore = inject(Firestore);
-    private userCollection: CollectionReference = collection(this.db, USER_DATA);
+    private readonly db: Firestore = inject(Firestore);
+    private readonly userCollection: CollectionReference = collection(this.db, USER_DATA);
 
     currentUserDoc: DocumentReference | undefined;
 
@@ -36,7 +36,7 @@ export class UserSettingsService {
                         uid: userData['uid'],
                         displayName: userData['displayName'],
                         email: userData['email'],
-                        photoURL: userData['photoURL'],
+                        photoUrl: userData['photoUrl'],
                         seeName: userData['seeName'],
                         allowChat: userData['allowChat'],
                         allowInvites: userData['allowInvites'],
@@ -46,7 +46,7 @@ export class UserSettingsService {
                     const newSettings: UserSettings = {
                         ...NewUserSettings,
                         displayName: currentUser!.displayName,
-                        photoURL: currentUser!.photoURL,
+                        photoUrl: currentUser!.photoUrl,
                         uid: currentUser!.uid,
                         email: currentUser!.email,
                     };

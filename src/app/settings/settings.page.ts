@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { closeCircleOutline } from 'ionicons/icons';
@@ -14,13 +14,13 @@ import { AppToastService } from 'src/services/app-toast.service';
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
   standalone: true,
-  imports: [IonList, IonItem,  NgIf, IonCardHeader, IonLabel, CommonModule, FormsModule, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonAvatar, IonCard, IonCardContent, IonCheckbox ],
+  imports: [IonList, IonItem, IonCardHeader, IonLabel, CommonModule, FormsModule, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonAvatar, IonCard, IonCardContent, IonCheckbox ],
 })
 export class SettingsPage implements OnInit {
-  private auth: Auth = inject(Auth);
-  private modalCtrl: ModalController = inject(ModalController);
-  private settingsService: UserSettingsService = inject(UserSettingsService);
-  private toastCtrl: AppToastService = inject(AppToastService);
+  private readonly auth: Auth = inject(Auth);
+  private readonly modalCtrl: ModalController = inject(ModalController);
+  private readonly settingsService: UserSettingsService = inject(UserSettingsService);
+  private readonly toastCtrl: AppToastService = inject(AppToastService);
   public settings: void | UserSettings = undefined;
 
   constructor() {

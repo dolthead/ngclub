@@ -1,18 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-icon slot="start" src="/assets/club.svg" size="large"></ion-icon>
+    <ion-buttons slot="start">
+      <ion-button color="dark" aria-hidden="true">
+        <ion-icon slot="icon-only" src="/assets/club.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-icon slot="start" src="/assets/club.svg" size="large"></ion-icon> -->
+    <ion-title ><strong>C L U B</strong></ion-title>
+    <!-- <ion-title class="ion-text-center" color="primary" size="small"><strong>C L U B</strong></ion-title> -->
     <ion-buttons slot="end">
-      <ion-button *ngIf="!auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Login" [disabled]="!authReady">
-        <ion-icon slot="icon-only" name="person-outline"></ion-icon>
-      </ion-button>
-      <ion-button *ngIf="auth.currentUser" color="dark" (click)="openUserSettings()" aria-label="Open user settings">
-        <ion-icon slot="icon-only" name="person"></ion-icon>
-      </ion-button>
+      @if (auth.currentUser) {
+        <ion-button color="dark" (click)="openUserSettings()" aria-label="Open user settings">
+          <ion-icon slot="icon-only" name="person"></ion-icon>
+        </ion-button>
+      } @else {
+        <ion-button color="dark" (click)="openUserSettings()" aria-label="Login" [disabled]="!authReady">
+          <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+        </ion-button>
+      }
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="padding">
+<ion-content>
 
   <ion-refresher slot="fixed" (ionRefresh)="refreshPage($event)">
     <ion-refresher-content></ion-refresher-content>
@@ -20,23 +30,29 @@
 
   <ion-list lines="full">
 
-    <ion-item *ngFor="let user of userList">
+    @for (user of userList; track user['localId']) {
+    <ion-item>
       <ion-avatar slot="start">
-        <img [src]="user['photoURL']" alt="User photo, or first initial placeholder">
+        <img [src]="user['photoUrl']" alt="User photo, or first initial placeholder">
       </ion-avatar>
       <ion-label>{{ user['displayName'] }}</ion-label>
     </ion-item>
+    }
 
-    <ng-container *ngIf="loading">
-      <ion-item *ngFor="let x of [35, 50, 40]">
-        <ion-avatar slot="start">
-          <ion-skeleton-text [animated]="true" style="border-radius: 50%"></ion-skeleton-text>
-        </ion-avatar>
-        <ion-label>
-          <ion-skeleton-text [animated]="true" style="height: 24px" [ngStyle]="{ 'width': x + '%'}"></ion-skeleton-text>
-        </ion-label>
-      </ion-item>
-    </ng-container>
+    @if (loading) {
+      <ng-container>
+        @for (x of [25, 30, 20]; track x) {
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-skeleton-text [animated]="true" style="border-radius: 50%"></ion-skeleton-text>
+            </ion-avatar>
+            <ion-label>
+              <ion-skeleton-text [animated]="true" style="height: 24px" [ngStyle]="{ 'width': x + '%'}"></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+        }
+      </ng-container>
+    }
 
   </ion-list>
 

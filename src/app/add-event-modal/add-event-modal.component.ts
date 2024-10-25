@@ -4,15 +4,15 @@ import { addIcons } from 'ionicons';
 import { closeCircleOutline } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-add-post-modal',
-  templateUrl: './add-post-modal.component.html',
-  styleUrls: ['./add-post-modal.component.scss'],
+  selector: 'app-add-event-modal',
+  templateUrl: './add-event-modal.component.html',
+  styleUrls: ['./add-event-modal.component.scss'],
   standalone: true,
   imports: [IonContent, IonTitle, IonIcon, IonButton, IonButtons, IonToolbar, IonHeader],
 })
-export class AddPostModalComponent implements OnInit {
+export class AddEventModalComponent implements OnInit {
 
-  private readonly modalCtrl: ModalController = inject(ModalController);
+  private readonly modalController: ModalController = inject(ModalController);
 
   constructor() { 
     addIcons({ closeCircleOutline });
@@ -22,7 +22,7 @@ export class AddPostModalComponent implements OnInit {
 
   closeModal() {
     // close the modal
-    this.modalCtrl.dismiss();
+    this.modalController.dismiss();
   }
 
 }
