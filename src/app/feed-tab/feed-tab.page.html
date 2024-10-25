@@ -26,9 +26,9 @@
           <h2>{{post.title}}</h2>
           <p>{{post.content}}</p>
         </ion-label>
-        @for (img of post.imageList; track $index) {
-          <ion-thumbnail slot="end">
-            <img src="{{img}}">
+        @for (img of post.imageList; track img) {
+          <ion-thumbnail size="small" slot="end">
+            <img src="{{img}}" alt="placeholder image">
           </ion-thumbnail>
         }
       </ion-item>

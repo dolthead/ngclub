@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
     <!-- <ion-icon slot="start" src="/assets/club.svg" size="large"></ion-icon> -->
-    <ion-title ><strong>C L U B</strong></ion-title>
+    <ion-title ><strong>club</strong></ion-title>
     <!-- <ion-title class="ion-text-center" color="primary" size="small"><strong>C L U B</strong></ion-title> -->
     <ion-buttons slot="end">
       @if (auth.currentUser) {
@@ -30,7 +30,7 @@
 
   <ion-list lines="full">
 
-    @for (user of userList; track user['localId']) {
+    @for (user of userList; track user['displayName']) {
     <ion-item>
       <ion-avatar slot="start">
         <img [src]="user['photoUrl']" alt="User photo, or first initial placeholder">

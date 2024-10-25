@@ -51,7 +51,8 @@ export class FeedTabPage {
     addIcons({ addCircleOutline });
     this.postList.forEach(post => {
       // [1, 2, 3].forEach(() => post.imageList.push(`https://via.placeholder.com/150?text=${post.id}`));
-      [1, 2].forEach(() => post.imageList.push(`https://via.placeholder.com/150?text=${post.id}`));
+      // [1, 2].forEach(x => post.imageList.push(`https://via.placeholder.com/20?text=${post.id}.${x}`));
+      [1, 2].forEach(x => post.imageList.push(`/assets/dolthead.png?text=${post.id}.${x}`));
     });
   }
 
