@@ -30,11 +30,13 @@
 
   <ion-list lines="full">
 
-    @for (user of userList; track user['displayName']) {
+    @for (user of userList; track user['email']) {
+    <!-- <div>{{ user | json }}</div> -->
     <ion-item>
-      <ion-avatar slot="start">
-        <img [src]="user['photoUrl']" alt="User photo, or first initial placeholder">
-      </ion-avatar>
+      <ion-icon slot="start" size="large" name="person-circle"></ion-icon>
+      <!-- <ion-avatar slot="start"> -->
+        <!-- <img [src]="user['photoURL']" alt="User photo, or first initial placeholder" referrerpolicy="no-referrer" crossorigin="use-credentials"> -->
+      <!-- </ion-avatar> -->
       <ion-label>{{ user['displayName'] }}</ion-label>
     </ion-item>
     }

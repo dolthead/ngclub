@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, IonItem, IonLabel, IonList, IonAvatar, IonRefresher, IonRefresherContent, IonSkeletonText } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { person, personOutline } from 'ionicons/icons';
+import { person, personOutline, personCircle } from 'ionicons/icons';
 import { SettingsPage } from '../settings/settings.page';
 import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { NgStyle } from '@angular/common';
@@ -14,7 +14,7 @@ import { AppToastService } from 'src/services/app-toast.service';
   templateUrl: 'home-tab.page.html',
   styleUrls: ['home-tab.page.scss'],
   standalone: true,
-  imports: [ IonSkeletonText, IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem, NgStyle, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
+  imports: [ IonSkeletonText, IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
 export class HomeTabPage implements OnInit {
   private readonly provider: GoogleAuthProvider = new GoogleAuthProvider();
@@ -28,7 +28,7 @@ export class HomeTabPage implements OnInit {
   public loading = false;
   
   constructor() {
-    addIcons({ personOutline, person });
+    addIcons({ personOutline, person, personCircle });
   }
 
   ngOnInit() {

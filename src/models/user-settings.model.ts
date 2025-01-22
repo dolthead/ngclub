@@ -1,6 +1,6 @@
 export interface UserSettings {
     displayName: string | null;
-    photoUrl: string | null;
+    photoURL: string | null;
     email: string | null;
     uid: string;
     seeName: boolean; 

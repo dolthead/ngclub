@@ -8,7 +8,7 @@ const USER_DATA = 'UserData';
 const NewUserSettings: UserSettings = {
     displayName: '',
     email: '',
-    photoUrl: '',
+    photoURL: '',
     uid: '',
     seeName: false,
     allowChat: false,
@@ -36,7 +36,7 @@ export class UserSettingsService {
                         uid: userData['uid'],
                         displayName: userData['displayName'],
                         email: userData['email'],
-                        photoUrl: userData['photoUrl'],
+                        photoURL: userData['photoURL'],
                         seeName: userData['seeName'],
                         allowChat: userData['allowChat'],
                         allowInvites: userData['allowInvites'],
@@ -46,7 +46,7 @@ export class UserSettingsService {
                     const newSettings: UserSettings = {
                         ...NewUserSettings,
                         displayName: currentUser!.displayName,
-                        photoUrl: currentUser!.photoUrl,
+                        photoURL: currentUser!.photoURL,
                         uid: currentUser!.uid,
                         email: currentUser!.email,
                     };

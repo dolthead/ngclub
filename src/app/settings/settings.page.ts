@@ -2,8 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
-import { closeCircleOutline } from 'ionicons/icons';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, IonAvatar, IonCard, IonCardContent, IonCheckbox, IonLabel, IonCardHeader, IonItem, IonList } from '@ionic/angular/standalone';
+import { closeCircleOutline, personCircle } from 'ionicons/icons';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, ModalController, IonCard, IonCardContent, IonCheckbox, IonLabel, IonCardHeader, IonItem, IonList } from '@ionic/angular/standalone';
 import { Auth } from '@angular/fire/auth';
 import { UserSettings } from 'src/models/user-settings.model';
 import { UserSettingsService } from 'src/services/user-settings.service';
@@ -14,7 +14,7 @@ import { AppToastService } from 'src/services/app-toast.service';
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
   standalone: true,
-  imports: [IonList, IonItem, IonCardHeader, IonLabel, CommonModule, FormsModule, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonAvatar, IonCard, IonCardContent, IonCheckbox ],
+  imports: [IonList, IonItem, IonCardHeader, IonLabel, CommonModule, FormsModule, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCheckbox ],
 })
 export class SettingsPage implements OnInit {
   private readonly auth: Auth = inject(Auth);
@@ -24,7 +24,7 @@ export class SettingsPage implements OnInit {
   public settings: void | UserSettings = undefined;
 
   constructor() {
-    addIcons({ closeCircleOutline });
+    addIcons({ closeCircleOutline, personCircle });
   }
 
   ngOnInit(): void {
