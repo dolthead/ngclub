@@ -14,7 +14,7 @@ import { AppToastService } from 'src/services/app-toast.service';
   templateUrl: 'home-tab.page.html',
   styleUrls: ['home-tab.page.scss'],
   standalone: true,
-  imports: [ IonSkeletonText, IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
+  imports: [ NgStyle, IonSkeletonText, IonRefresherContent, IonRefresher, IonAvatar, IonList,  IonLabel, IonItem, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent ],
 })
 export class HomeTabPage implements OnInit {
   private readonly provider: GoogleAuthProvider = new GoogleAuthProvider();

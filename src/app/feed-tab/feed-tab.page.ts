@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IonThumbnail, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton, ModalController, IonList, IonItem, IonLabel, IonAvatar } from '@ionic/angular/standalone';
+import { IonThumbnail, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton, ModalController, IonList, IonItem, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { addCircleOutline } from 'ionicons/icons';
 import { AddPostModalComponent } from '../add-post-modal/add-post-modal.component';
@@ -11,7 +11,7 @@ import { Post } from 'src/models/post.model';
   templateUrl: 'feed-tab.page.html',
   styleUrls: ['feed-tab.page.scss'],
   standalone: true,
-  imports: [IonAvatar, IonLabel, IonItem, IonList, IonButton, IonButtons, IonIcon, IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, IonThumbnail ],
+  imports: [ IonLabel, IonItem, IonList, IonButton, IonButtons, IonIcon, IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, IonThumbnail ],
 })
 export class FeedTabPage {
   private readonly modalController: ModalController = inject(ModalController);
