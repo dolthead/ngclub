@@ -1,6 +1,6 @@
 import { enableProdMode, provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RouteReuseStrategy, provideRouter } from '@angular/router';
+import { PreloadAllModules, RouteReuseStrategy, provideRouter, withPreloading } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 
 import { routes } from './app/app.routes';
@@ -16,11 +16,10 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    // provideExperimentalZonelessChangeDetection(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
-    provideRouter(routes),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+    // provideZoneChangeDetection({ eventCoalescing: true }),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
